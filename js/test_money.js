@@ -43,6 +43,14 @@ class MoneyTest{
         let testMethods = allProps.filter(p=> typeof moneyPrototype[p] === "function" && p.startsWith('test'))
         return testMethods
     }
+    testAdditionOfDollarsAndEuros(){
+        let fiveDollars = new Money(5, 'USD')
+        let tenEuros = new Money(10, 'EUR')
+        let portfolio = new Portfolio()
+        portfolio.add(fiveDollars, tenEuros)
+        let expectedValue = new Money(17, 'USD')
+        assert.deepStrictEqual(expectedValue, portfolio.evaluate('USD'))
+    }
 }
 
 
