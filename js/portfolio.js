@@ -14,12 +14,14 @@ class Portfolio{
         return new Money(total, currency)
     }
     convert(money, currency){
-        const eurToUsd = 1.2
+        let exchangeRate = new Map()
+        exchangeRate.set('EUR->USD', 1.2)
+        exchangeRate.set('USD->KRW', 1100)
+        let key = money.currency + '->' + currency
         if(money.currency === currency){
             return money.amount
         }
-        return money.amount * eurToUsd
-
+        return money.amount * exchangeRate.get(key)
     }
 }
 module.exports = Portfolio
