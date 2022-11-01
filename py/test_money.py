@@ -22,6 +22,15 @@ class TestMoney(unittest.TestCase):
         portfolio = Portfolio()
         portfolio.add(fiveDollars,tenDollars )
         self.assertEqual(fifteenDollars, portfolio.evaluate('USD'))
+    def testAdditionDollarAndEuros(self):
+        fiveDollars = Money(5, 'USD')
+        tenEuros = Money(10, 'EUR')
+        portfolio = Portfolio()
+        portfolio.add(fiveDollars, tenEuros)
+        expectedResult = Money(17, 'USD')
+        actualResult = portfolio.evaluate('USD')
+        self.assertEqual(expectedResult, actualResult)
+
 
 
 if __name__ == '__main__':
